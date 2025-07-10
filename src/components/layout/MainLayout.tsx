@@ -2,50 +2,35 @@
 
 "use client";
 
-import React from 'react';
-import { Toaster } from 'react-hot-toast'; 
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-  return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {children} 
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-      
-      <Toaster
-        position="top-right" 
-        reverseOrder={false} 
-        toastOptions={{
-          duration: 3000,
-          style: {
-            background: '#363636',
-            color: '#fff',
-          },
-          success: {
-            style: {
-              background: '#22C55E', 
-              color: '#fff',
-            },
-            iconTheme: {
-              primary: '#fff',
-              secondary: '#22C55E',
-            },
-          },
-          error: {
-            style: {
-              background: '#EF4444', 
-              color: '#fff',
-            },
-            iconTheme: {
-              primary: '#fff',
-              secondary: '#EF4444',
-            },
-          },
-        }}
+  return (
+    <div className="flex h-screen overflow-hidden"> {/* This div now controls overall layout */}
+      {/* Sidebar Component */}
+      <Sidebar
+        isCollapsed={isSidebarCollapsed}
+        toggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
       />
+
+      {/* Main Content Area */}
+      <main
+        className={`flex-1 flex flex-col transition-all duration-300 ease-in-out
+          ${isSidebarCollapsed ? 'ml-0' : 'ml-64'}`} 
+      >
+        {/* The actual page content will render here */}
+        {/* We keep the inner div for styling of the content area itself */}
+        <div className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+          {children} {/* This will render your page content (e.g., dashboard/page.tsx) */}
+        </div>
+      </main>
     </div>
   );
 };
