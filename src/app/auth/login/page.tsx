@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; 
-import { supabase } from '../../../../utils/supabaseClient';
+import { supabase } from '../../../utils/supabaseClient';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
