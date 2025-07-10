@@ -3,7 +3,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-//import UserDashboardContent from '@/components/UserDashboardContent'; // We'll create this next
+import UserDashboardContent from '@/components/UserDashboardContent'; 
 
 export default async function DashboardPage() {
   const supabase = createServerComponentClient({ cookies: () => cookies() });
@@ -19,7 +19,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col h-full">
-      {/* <UserDashboardContent user={session.user} /> */}
+       <UserDashboardContent user={session.user} /> 
     </div>
   );
 }

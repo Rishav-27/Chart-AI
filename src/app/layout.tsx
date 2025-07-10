@@ -2,9 +2,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import MainLayout from "@/components/layout/MainLayout"; // REMOVE THIS IMPORT!
 import AuthSessionProvider from "@/components/AuthSessionProvider";
-import { Toaster } from 'react-hot-toast'; // Import Toaster here
+import { Toaster } from 'react-hot-toast'; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthSessionProvider>
-          {children} {/* Children directly here, MainLayout will be in a route group */}
+          {children} 
         </AuthSessionProvider>
-        {/* Toaster for app-wide notifications */}
+      
         <Toaster
           position="bottom-right"
           reverseOrder={false}

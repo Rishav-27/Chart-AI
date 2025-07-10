@@ -1,7 +1,5 @@
 // src/app/(dashboard)/layout.tsx
-// This layout applies only to routes within the (dashboard) group (e.g., /dashboard)
-
-import MainLayout from '@/components/layout/MainLayout'; // Import MainLayout here
+import MainLayout from '@/components/layout/MainLayout'; 
 
 export default function DashboardGroupRootLayout({
   children,
@@ -9,7 +7,7 @@ export default function DashboardGroupRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <MainLayout> {/* MainLayout wraps children only for dashboard routes */}
+    <MainLayout> 
       {children}
     </MainLayout>
   );
